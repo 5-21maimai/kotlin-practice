@@ -66,4 +66,24 @@ fun main(args: Array<String>) {
     println(charSet)
     charSet -= 'a'
     println(charSet)
+    
+    val numberMap: MutableMap<String, Int> = mutableMapOf("one" to 1, "two" to 2)
+    println(numberMap)
+    println(numberMap.size)
+    println(numberMap["one"])
+    println(numberMap["three"])
+    numberMap += "three" to 3
+    println(numberMap)
+    
+    println(5 in 1..10)
+    val range: IntRange =  12..15
+    println(5 in range)
+    println(5 !in range)
+    
+    println((1..5).toList())
+    println((1..5).reversed().toList())
+    println((5 downTo 1).toList())
+    println((1..5 step 2).toList())
+    println((100 downTo 0 step 25).toList())
+    
 }
