@@ -12,6 +12,23 @@ fun main(args: Array<String>) {
     
     println(firstK("hogeKfuga"))
     println(firstUpperCase("hogefUga"))
+    println(firstWhitespace("hogefug a"))
+    
+    val square: (Int) -> Int = { i: Int ->
+    	i * i
+    }
+    
+    val square1 = { i: Int ->
+    	i * i
+    }
+    
+    val square2: (Int) -> Int  = { i ->
+    	i * i
+    }
+    
+    val square3: (Int) -> Int  = {
+    	it * it
+    }
     
 }
 
@@ -35,4 +52,5 @@ fun firstUpperCase(str: String): Int {
     return first(str, ::isUpperCase)
 }
 
+fun firstWhitespace(str: String): Int = first(str) { it.isWhitespace() }
 
