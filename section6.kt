@@ -30,6 +30,17 @@ fun main(args: Array<String>) {
     	it * it
     }
     
+    val counter1 = getCounter()
+    val counter2 = getCounter()
+    println(counter1())
+    println(counter1())
+    println(counter2())
+    println(counter1())
+    println(counter2())
+    
+    log{"出力"}
+    log(false){"出力されない"}
+    
 }
 
 fun first(str: String, precidate: (Char) -> Boolean): Int {
@@ -53,4 +64,17 @@ fun firstUpperCase(str: String): Int {
 }
 
 fun firstWhitespace(str: String): Int = first(str) { it.isWhitespace() }
+
+fun getCounter(): () -> Int {
+    var count = 0
+    return {
+        count++
+    }
+}
+
+inline fun log(debug: Boolean = true, message: () -> String) {
+    if(debug) {
+        println(message())
+    }
+}
 
