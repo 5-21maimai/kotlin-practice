@@ -41,6 +41,11 @@ fun main(args: Array<String>) {
     log{"出力"}
     log(false){"出力されない"}
     
+    println(containDigit("abc123"))
+    println(containDigit2("abc123"))
+    
+    val square4: (Int) -> Int = fun(i: Int) = i * i
+    
 }
 
 fun first(str: String, precidate: (Char) -> Boolean): Int {
@@ -76,5 +81,31 @@ inline fun log(debug: Boolean = true, message: () -> String) {
     if(debug) {
         println(message())
     }
+}
+
+
+inline fun forEach(str: String, f: (Char) -> Unit) {
+    for (c in str) {
+        f(c)
+    }
+}
+
+fun containDigit(str: String): Boolean {
+    forEach(str) {
+        if (it.isDigit())
+        return true
+    }
+    return false
+}
+
+fun containDigit2(str: String): Boolean {
+    var result = false
+    forEach(str) {
+        if (it.isDigit()) {
+            result = true
+            return@forEach
+        }
+    }
+    return result
 }
 
