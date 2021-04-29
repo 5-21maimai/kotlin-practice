@@ -12,13 +12,21 @@ fun main(args: Array<String>) {
     println(student.name)
     println(student.id)
     student.introduceMyself()
+    
+    val person2: Person = Student("jiro", 124)
+    person2.introduceMyself()
 }
 
-open class Person(val name: String) {
-    fun introduceMyself() {
+open class Person(open val name: String) {
+    open fun introduceMyself() {
         println("I am $name.")
     }
 }
 
-class Student(name: String, val id: Long): Person(name)
+class Student(override val name: String, val id: Long): Person(name) {
+    override fun introduceMyself() {
+        println("I am $name(id=$id)")
+        super.introduceMyself()
+    }
+}
 
