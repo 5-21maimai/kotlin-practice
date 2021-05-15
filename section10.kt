@@ -59,3 +59,18 @@ class HogeFuga: Hoge, Fuga {
         super<Hoge>.execute()
     }
 }
+
+interface Fooo {
+    fun aaa()
+    fun bbb()
+}
+
+interface Baar: Fooo {
+    override fun aaa () {}
+    fun ccc()
+}
+
+class Baz: Baar {
+    override fun bbb(){}
+    override fun ccc(){}
+}
