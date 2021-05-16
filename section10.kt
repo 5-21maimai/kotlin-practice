@@ -74,3 +74,31 @@ class Baz: Baar {
     override fun bbb(){}
     override fun ccc(){}
 }
+
+interface Greeter2 {
+    fun sayHello(target: String)
+    fun sayHello()
+}
+
+class JapaneseGreeter: Greeter2 {
+    override fun sayHello(target: String){}
+    override fun sayHello(){}
+}
+
+class JapaneseGreeterWithRecording(private val greeter: Greeter2): Greeter2 by greeter {
+    
+    private val _targets: MutableSet<String> = mutableSetOf()
+    
+    val targets: Set<String>
+    	get() = _targets
+    
+    override fun sayHello(){
+        greeter.sayHello()
+    }
+    
+    override fun sayHello(target: String){
+        _targets += target
+        greeter.sayHello(target)
+    }
+                                
+}
